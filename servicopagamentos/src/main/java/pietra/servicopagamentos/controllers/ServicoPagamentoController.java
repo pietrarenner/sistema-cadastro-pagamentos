@@ -1,21 +1,27 @@
 package pietra.servicopagamentos.controllers;
 
-import java.util.Date;
-import java.util.List;
+import java.time.LocalDateTime;
 
-import org.springframework.context.event.EventListener;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import pietra.servicopagamentos.entities.Pagamento;
+import pietra.servicopagamentos.services.PagamentoService;
 
-
+@RestController
 public class ServicoPagamentoController {
-    // @PostMapping("/registrapagamento")
-    // public Pagamento resgistraPagamento(@RequestParam Date data, @RequestBody Long codass, @RequestBody float valorPago) {}
+    private PagamentoService pagamentoService;
+
+    public ServicoPagamentoController(PagamentoService pagamentoService) {
+        this.pagamentoService = pagamentoService;
+    }
+
+    @PostMapping("/registrarpagamento")
+    public Pagamento registrarPagamento(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime data, @RequestParam Long codass, @RequestParam float valorPago) {
+        return pagamentoService.registraPagamento(data, codass, valorPago);
+    }
 
     // @EventListener
     // public void handlePagamentoServicoCadastramento(PagamentoServicoCadastramento event) {

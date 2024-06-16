@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 public class ServicoAssinaturasValidasController {
     // @GetMapping("assinvalidas/:codass")
-    // public boolean getAssinaturaAtiva(@RequestParam("codass") Long codass) {}
+    // public boolean getAssinaturaAtiva(@RequestParam("codass") Long codass) {
+    //      return assinaturaService.assinaturaIsValid(codass);
+    // }
 
     // @EventListener
     // public void handlePagamentoServicoAssinaturaValidaEvento(PagamentoServicoAssinaturaValidaEvento evento) {
