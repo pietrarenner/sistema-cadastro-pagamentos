@@ -1,14 +1,8 @@
-/*
 package pietra.servicoassinaturasvalidas.services;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 import org.springframework.stereotype.Service;
-import pietra.servicoassinaturasvalidas.dto.AssinaturaDTO;
+
 import pietra.servicoassinaturasvalidas.entities.Assinatura;
-import pietra.servicoassinaturasvalidas.enums.Status;
-import pietra.servicoassinaturasvalidas.exceptions.ResourceNotFound;
 import pietra.servicoassinaturasvalidas.repositories.AssinaturaRepository;
 
 @Service
@@ -19,10 +13,12 @@ public class AssinaturaService {
         this.assinaturaRepository = assinaturaRepository;
     }
 
-    // public boolean assinaturaIsValid(Long codass) {
-            
-    // }
+    public boolean assinaturaIsValid(Long codass) {
+        return assinaturaRepository.isValid(codass);   
+    }
+
+    public void removeCache(Long codass) {
+        // método para remover entrada do cache
+    }
 
 }
-
-*/
