@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pietra.servicoassinaturasvalidas.enums.Status;
 
 @Entity
 @Setter
@@ -28,5 +29,6 @@ public class Assinatura {
     private Date inicio;
     @Column(name = "fim_vigencia", nullable = false)
     private Date fim;
-    
+    @Column(nullable = false)
+    private Status status;
 }

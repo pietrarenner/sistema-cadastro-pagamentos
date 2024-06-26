@@ -2,13 +2,13 @@ package pietra.servicocadastramento.controllers;
 
 import java.util.List;
 
-import org.springframework.context.event.EventListener;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,6 +24,7 @@ import pietra.servicocadastramento.services.ClienteService;
 
 @RestController
 @CrossOrigin(origins = "*")
+@RequestMapping("/servicocadastramento")
 public class ServicoCadastramentoController {
     private AssinaturaService assinaturaService;
     private AplicativoService aplicativoService;
@@ -60,6 +61,11 @@ public class ServicoCadastramentoController {
         return assinaturaService.getAssinaturasTipo(tipo);
     }
 
+    @GetMapping("/servcad/assinatura/{id}")
+    public Assinatura getAssinaturasId(@PathVariable("id") Long id) {
+        return assinaturaService.getAssinaturaId(id);
+    }
+
     @GetMapping("/servcad/asscli")
     public List<Assinatura> getAssinaturasCliente(@RequestParam("codcli") Long codcli) {
         return assinaturaService.getAssinaturasCliente(codcli);
@@ -69,9 +75,4 @@ public class ServicoCadastramentoController {
     public List<Assinatura> getAssinaturas(@RequestParam("codapp") Long codapp) {
         return assinaturaService.getAssinaturasApp(codapp);
     }
-
-    // @EventListener
-    // public void handlePagamentoServicoCadastramentoEvento(PagamentoServicoCadastramentoEvento evento) {
-    //     System.out.println("Recebido evento customizado - Mensagem: " + evento.getMessage());
-    // }
 }

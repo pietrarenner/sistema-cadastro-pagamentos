@@ -1,0 +1,70 @@
+services:
+  assinaturasvalidas:
+    build: servicoassinaturasvalidas
+    image: assinaturasvalidas
+    ports:
+      - "8002:8002"
+    depends_on:
+      - namingserver
+      - rabbitmq
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://namingserver:8761/eureka
+      - spring.rabbitmq.host=rabbitmq
+      - spring.rabbitmq.port=5672
+      - spring.rabbitmq.username=engsoft2
+      - spring.rabbitmq.password=engsoft2
+
+  cadastramento:
+    build: servicocadastramento
+    image: cadastramento
+    ports:
+      - "8000:8000"
+    depends_on:
+      - namingserver
+      - rabbitmq
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://namingserver:8761/eureka
+      - spring.rabbitmq.host=rabbitmq
+      - spring.rabbitmq.port=5672
+      - spring.rabbitmq.username=engsoft2
+      - spring.rabbitmq.password=engsoft2
+
+  pagamentos:
+    build: servicopagamentos
+    image: pagamentos
+    ports:
+      - "8001:8001"
+    depends_on:
+      - namingserver
+      - rabbitmq
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://namingserver:8761/eureka
+      - spring.rabbitmq.host=rabbitmq
+      - spring.rabbitmq.port=5672
+      - spring.rabbitmq.username=engsoft2
+      - spring.rabbitmq.password=engsoft2
+
+  namingserver:
+    build: namingserver
+    image: namingserver
+    ports:
+      - "8761:8761"
+
+  apigateway:
+    build: apigateway
+    image: apigateway
+    ports:
+      - "8765:8765"
+    depends_on:
+      - namingserver
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://namingserver:8761/eureka
+
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+    - "5672:5672"
+    - "15672:15672"
+    environment:
+    - RABBITMQ_DEFAULT_USER=engsoft2
+    - RABBITMQ_DEFAULT_PASS=engsoft2

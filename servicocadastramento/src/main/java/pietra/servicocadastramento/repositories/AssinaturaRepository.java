@@ -1,8 +1,11 @@
 package pietra.servicocadastramento.repositories;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
 import pietra.servicocadastramento.entities.Assinatura;
 import pietra.servicocadastramento.enums.Status;
 
