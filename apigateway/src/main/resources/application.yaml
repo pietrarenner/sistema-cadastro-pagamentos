@@ -25,9 +25,9 @@ eureka:
     client:
         serviceUrl:
             defaultZone: http://localhost:8761/eureka
-    instance:
-        hostname: lenovoV14.mshome.net
-        preferIpAddress: true
+    # instance:
+    #     hostname: lenovoV14.mshome.net
+    #     preferIpAddress: true
 
 management:
     endpoints:
