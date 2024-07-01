@@ -9,7 +9,6 @@ services:
       - rabbitmq
     environment:
       - eureka.client.serviceUrl.defaultZone=http://namingserver:8761/eureka
-      - spring.rabbitmq.host=amqps://iubgpzgm:8UZY-bVN_e_4xxl3_WwcHEonmr08y58L@vulture.rmq.cloudamqp.com/iubgpzgm
       - spring.rabbitmq.host=rabbitmq
       - spring.rabbitmq.port=5672
       - spring.rabbitmq.username=engsoft2

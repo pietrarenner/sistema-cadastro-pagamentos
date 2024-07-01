@@ -23,9 +23,9 @@ public class Assinatura {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long codigo;
-    @Column(nullable = false)
+    @Column(name = "cod_app", nullable = false)
     private Long codApp;
-    @Column(nullable = false)
+    @Column(name = "cod_cli", nullable = false)
     private Long codCli;
 
     @Column(name = "inicio_vigencia", nullable = false)

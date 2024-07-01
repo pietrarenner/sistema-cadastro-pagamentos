@@ -20,9 +20,9 @@ public class Assinatura {
     @Id
     @Column(nullable = false)
     private Long codigo;
-    @Column(nullable = false)
+    @Column(name = "cod_app", nullable = false)
     private Long codApp;
-    @Column(nullable = false)
+    @Column(name = "cod_cli", nullable = false)
     private Long codCli;
     
     @Column(name = "inicio_vigencia", nullable = false)
